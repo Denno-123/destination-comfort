@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Kenya Hotels</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        /* Basic styles */
+        header, section {
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        header h1, section h1 {
+            font-size: 36px;
+        }
+        section p {
+            font-size: 1.2em;
+            color: white;
+        }
+        .start-btn, .register-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .start-btn:hover, .register-btn:hover {
+            background-color: #218838;
+        }
+        /* Hotel List styles */
+        .hotel-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(2, 0, 0, 0.7);
+        }
+        .hotel {
+            display: flex;
+            align-items: center;
+            background: off white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hotel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .hotel img {
+            width: 130px;
+            height: 90px;
+            border-radius: 10px;
+            margin-right: 20px;
+            object-fit: cover full;
+        }
+        .hotel-info {
+            flex-grow: 1;
+        }
+        /* Individual Hotel details */
+        .hotel-details {
+            display: none;
+            margin-top: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            color: white;
+        }
+        .booking-form input, .booking-form select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .booking-form input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .booking-form input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        /* Background image styles */
+        #about {
+            background-image: url('images/hotel1.jpg');
+            height: 100vh;
+        }
+        #hotel-list {
+            background-image: url('image/hotel2.jpg');
+            height: 100vh;
+        }
+        #hotel-list {
+            background-image: url('image/hotel3.jpg');
+            height: 400vh;
+       
+       
+        }
+        /* To add overlay on text */
+        header::before, section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay */
+            z-index: 1;
+        }
+        header * , section * {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+<!-- First Page: About the Website -->
+<header id="about">
+    <h1>Welcome to Explore Kenya Hotels</h1>
+    <p>Your ultimate platform to discover and book the finest hotels across Kenya.</p>
+    <button class="start-btn" onclick="showHotelList()">Explore Hotels</button>
+</header>
+
+<!-- Second Page: Hotel List -->
+<section id="hotel-list" class="hotel-list" style="display:none;">
+    <header>
+        <h1>Hotel List</h1>
+    </header>
+
+    <div class="hotel" onclick="showHotelDetails('hotel1')">
+        <img src="images/hotel1.jpg" alt="Hotel Blue Sky">
+        <div class="hotel-info">
+            <h2>Hotel Blue Sky</h2>
+            <p>Description of Hotel Blue Sky.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel2')">
+        <img src="images/hotel2.jpg" alt="Safari Lodge">
+        <div class="hotel-info">
+            <h2>Safari Lodge</h2>
+            <p>Description of Safari Lodge.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel3')">
+        <img src="images/hotel3.jpg" alt="Mountain View Resort">
+        <div class="hotel-info">
+            <h2>Mountain View Resort</h2>
+            <p>Description of Mountain View Resort.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel4')">
+        <img src="images/hotel4.jpg" alt="Twinfall Hotel">
+        <div class="hotel-info">
+            <h2>Twinfall Hotel</h2>
+            <p>Description of Twinfall Hotel.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel5')">
+        <img src="images/hotel5.jpg" alt="Serena Hotel">
+        <div class="hotel-info">
+            <h2>Serena Hotel</h2>
+            <p>Description of Serena Hotel.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel6')">
+        <img src="images/hotel6.jpg" alt="Lake Naivasha Sopa Resort">
+        <div class="hotel-info">
+            <h2>Lake Naivasha Sopa Resort</h2>
+            <p>Description of Lake Naivasha Sopa Resort.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel7')">
+        <img src="images/hotel7.jpg" alt="Oserian Wildlife Camp">
+        <div class="hotel-info">
+            <h2>Oserian Wildlife Camp</h2>
+            <p>Description of Oserian Wildlife Camp.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel8')">
+        <img src="images/hotel8.jpg" alt="Mara Serena Safari Lodge">
+        <div class="hotel-info">
+            <h2>Mara Serena Safari Lodge</h2>
+            <p>Description of Mara Serena Safari Lodge.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel9')">
+        <img src="images/hotel9.jpg" alt="Radisson Blu Nairobi">
+        <div class="hotel-info">
+            <h2>Radisson Blu Nairobi</h2>
+            <p>Description of Radisson Blu Nairobi.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel10')">
+        <img src="images/hotel10.jpg" alt="Leopard Beach Resort">
+        <div class="hotel-info">
+            <h2>Leopard Beach Resort</h2>
+            <p>Description of Leopard Beach Resort.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel11')">
+        <img src="images/hotel11.jpg" alt="Maasai Mara Sopa Lodge">
+        <div class="hotel-info">
+            <h2>Maasai Mara Sopa Lodge</h2>
+            <p>Description of Maasai Mara Sopa Lodge.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel12')">
+        <img src="images/hotel12.jpg" alt="Sopa Lodge Amboseli">
+        <div class="hotel-info">
+            <h2>Sopa Lodge Amboseli</h2>
+            <p>Description of Sopa Lodge Amboseli.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel13')">
+        <img src="images/hotel3.jpg" alt="Nyali Sun Africa Beach Hotel">
+        <div class="hotel-info">
+            <h2>Nyali Sun Africa Beach Hotel</h2>
+            <p>Description of Nyali Sun Africa Beach Hotel.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel14')">
+        <img src="images/hotel4.jpg" alt="Hillpark Hotel Nairobi">
+        <div class="hotel-info">
+            <h2>Hillpark Hotel Nairobi</h2>
+            <p>Description of Hillpark Hotel Nairobi.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel15')">
+        <img src="images/hotel5.jpg" alt="Swahili Beach Resort">
+        <div class="hotel-info">
+            <h2>Swahili Beach Resort</h2>
+            <p>Description of Swahili Beach Resort.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel16')">
+        <img src="images/hotel6.jpg" alt="Serena Mountain Lodge">
+        <div class="hotel-info">
+            <h2>Serena Mountain Lodge</h2>
+            <p>Description of Serena Mountain Lodge.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel17')">
+        <img src="images/hotel7.jpg" alt="Enashipai Resort & Spa">
+        <div class="hotel-info">
+            <h2>Enashipai Resort & Spa</h2>
+            <p>Description of Enashipai Resort & Spa.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel18')">
+        <img src="images/hotel8.jpg" alt="Palacina Nairobi">
+        <div class="hotel-info">
+            <h2>Palacina Nairobi</h2>
+            <p>Description of Palacina Nairobi.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel19')">
+        <img src="images/hotel9.jpg" alt="Bamburi Beach Hotel">
+        <div class="hotel-info">
+            <h2>Bamburi Beach Hotel</h2>
+            <p>Description of Bamburi Beach Hotel.</p>
+        </div>
+    </div>
+
+
+    <div class="hotel" onclick="showHotelDetails('hotel20')">
+        <img src="images/hotel4.jpg" alt="Carnivore Hotel">
+        <div class="hotel-info">
+            <h2>Carnivore Hotel</h2>
+            <p>Description of Carnivore Hotel.</p>
+        </div>
+    </div>
+
+    <div class="hotel" onclick="showHotelDetails('hotel21')">
+        <img src="images/hotel3.jpg" alt="Two Rivers Mall Hotel">
+        <div class="hotel-info">
+            <h2>Two Rivers Mall Hotel</h2>
+            <p>Description of Two Rivers Mall Hotel.</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- Third Page: Individual Hotel Details -->
+<section id="hotel1" class="hotel-details">
+    <header>
+        <h1>Hotel Blue Sky</h1>
+    </header>
+    <p>Experience luxury at Hotel Blue Sky. Located in the heart of Nairobi.</p>
+    <form class="booking-form" action="sample.php" method="post">
+        <input type="hidden" name="hotelName" value="Hotel Blue Sky">
+        <input type="text" name="guestName" placeholder="Guest Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <label for="checkIn">Check-In Date:</label>
+        <input type="date" id="checkIn" name="checkIn" required>
+        <label for="checkOut">Check-Out Date:</label>
+        <input type="date" id="checkOut" name="checkOut" required>
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+        </select>
+        <input type="submit" value="Book Now">
+    </form>
+</section>
+
+<!-- Repeat similar changes for other hotel sections -->
+
+
+<section id="hotel2" class="hotel-details">
+    <header>
+        <h1>Safari Lodge</h1>
+    </header>
+    <p>Discover the wild beauty of Kenya while staying at Safari Lodge.</p>
+    <form class="booking-form">
+    </form>
+</section>
+
+<section id="hotel3" class="hotel-details">
+    <header>
+        <h1>Mountain View Resort</h1>
+    </header>
+    <p>Mountain View Resort offers breathtaking views and top-notch services.</p>
+    <form class="booking-form">
+               <input type="text" name="guestName" placeholder="Guest Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <label for="checkIn">Check-In Date:</label>
+        <input type="date" id="checkIn" name="checkIn" required>
+        <label for="checkOut">Check-Out Date:</label>
+        <input type="date" id="checkOut" name="checkOut" required>
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+        </select>
+        <input type="submit" value="Book Now">
+    </form>
+</section>
+
+<section id="hotel4" class="hotel-details">
+    <header>
+        <h1>Twinfall Hotel</h1>
+    </header>
+    <p>Experience comfort at Twinfall Hotel with its serene atmosphere.</p>
+    <form class="booking-form">
+               <input type="text" name="guestName" placeholder="Guest Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <label for="checkIn">Check-In Date:</label>
+        <input type="date" id="checkIn" name="checkIn" required>
+        <label for="checkOut">Check-Out Date:</label>
+        <input type="date" id="checkOut" name="checkOut" required>
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+        </select>
+        <input type="submit" value="Book Now">
+    </form>
+</section>
+
+<selection id="hotel5" class="hotel-details">
+    <header>
+        <h1>Serena Hotel</h1>
+    </header>
+    <p><strong>Location:</strong> Nairobi</p>
+        <p class="price">Price: $150 per night</p>
+        <p>Description: A luxurious hotel in the heart of Nairobi.</p>
+        <form class="booking-form" action="sample.php" method="post">
+            <input type="hidden" name="hotelName" value="Hotel Blue Sky">
+            <input type="text" name="guestName" placeholder="Guest Name" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <label for="checkIn">Check-In Date:</label>
+            <input type="date" id="checkIn" name="checkIn" required>
+            <label for="checkOut">Check-Out Date:</label>
+            <input type="date" id="checkOut" name="checkOut" required>
+            <label for="roomType">Room Type:</label>
+            <select id="roomType" name="roomType" required>
+                <option value="standard">Standard Room</option>
+                <option value="deluxe">Deluxe Room</option>
+                <option value="suite">Suite</option>
+            </select>
+            <input type="submit" value="Book Now">
+        </form>
+</section>
+
+<selection id="hotel6" class="hotel-details">
+    <header>
+        <h1>Lake Naivasha Sopa Resort</h1>
+    </header>
+    <p><strong>Location:</strong> Nairobi</p>
+        <p class="price">Price: $150 per night</p>
+        <p>Description: A luxurious hotel in the heart of Nairobi.</p>
+    <form class="booking-form">
+               <input type="text" name="guestName" placeholder="Guest Name" required>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <label for="checkIn">Check-In Date:</label>
+        <input type="date" id="checkIn" name="checkIn" required>
+        <label for="checkOut">Check-Out Date:</label>
+        <input type="date" id="checkOut" name="checkOut" required>
+        <label for="roomType">Room Type:</label>
+        <select id="roomType" name="roomType" required>
+            <option value="standard">Standard Room</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite</option>
+        </select>
+        <input type="submit" value="Book Now">
+    </form>
+</section>
+
+   <!-- Repeat similar changes for other hotel sections -->
+
+<!-- JavaScript to toggle between sections -->
+<script>
+    function showHotelList() {
+        document.getElementById('about').style.display = 'none';
+        document.getElementById('hotel-list').style.display = 'block';
+    }
+
+    function showHotelDetails(hotelId) {
+        document.getElementById('hotel-list').style.display = 'none';
+        const hotelDetails = document.querySelectorAll('.hotel-details');
+        hotelDetails.forEach(detail => detail.style.display = 'none');
+        document.getElementById(hotelId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                   
